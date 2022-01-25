@@ -57,7 +57,11 @@ const menu = [
   {
     text:"PhotoGallery",
     link: "/photogallery"
-  }
+  },
+  {
+    text:"MapModel",
+    link: "/mapmodel"
+  },
 ];
 export default {
   data() {

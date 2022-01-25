@@ -9,6 +9,7 @@ const TagCanvas = () => import("./view/TagCanvas/TagCanvas.vue");
 const Particles = () => import("./view/Particles/index.vue");
 const LinkLines = () => import("./view/LinkLines/index.vue");
 const PhotoGallery = () => import("./view/PhotoGallery/index.vue");
+const MapModel = () => import("./view/MapModel/index.vue");
 
 const routes = [
   {
@@ -46,6 +47,10 @@ const routes = [
       {
         path: "/photogallery",
         component: PhotoGallery,
+      },
+      {
+        path: "/mapmodel",
+        component: MapModel,
       },
     ],
   },
