@@ -19,6 +19,7 @@
       </div>
     </section>
     <p>Click Menu button on right top to visit demos</p>
+    <p>Author&nbsp;<a href="https://github.com/Siricee">@Sirice</a></p>
   </div>
 </template>
 <style lang="less" scoped>

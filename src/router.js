@@ -9,7 +9,9 @@ const TagCanvas = () => import("./view/TagCanvas/TagCanvas.vue");
 const Particles = () => import("./view/Particles/index.vue");
 const LinkLines = () => import("./view/LinkLines/index.vue");
 const PhotoGallery = () => import("./view/PhotoGallery/index.vue");
-const MapModel = () => import("./view/MapModel/index.vue");
+const VirtualCity = () => import("./view/VirtualCity/index.vue");
+const MapGeoJsonChina = () => import("./view/MapGeoJsonChina/index.vue");
+const MapSH = () => import("./view/MapSH/index.vue");
 
 const routes = [
   {
@@ -49,8 +51,16 @@ const routes = [
         component: PhotoGallery,
       },
       {
-        path: "/mapmodel",
-        component: MapModel,
+        path: "/virtualcity",
+        component: VirtualCity,
+      },
+      {
+        path: "/mapgeojsonchina",
+        component: MapGeoJsonChina,
+      },
+      {
+        path: "/mapShanghai",
+        component: MapSH,
       },
     ],
   },

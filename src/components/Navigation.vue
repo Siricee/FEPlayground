@@ -59,9 +59,17 @@ const menu = [
     link: "/photogallery"
   },
   {
-    text:"MapModel",
-    link: "/mapmodel"
+    text:"VirtualCity",
+    link: "/virtualcity"
   },
+  {
+    text:"MapGeoJsonChina",
+    link: "/mapgeojsonchina"
+  },
+  {
+    text:'ShangHaiMap',
+    link:'/mapShanghai'
+  }
 ];
 export default {
   data() {
