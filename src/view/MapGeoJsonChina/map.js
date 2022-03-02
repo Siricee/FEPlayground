@@ -195,6 +195,7 @@ export default class ChinaMap {
     this.controller = null;
     this.activeInstersect = [];
     this.raycaster = null;
+    document.body.removeChild(this.tooltip)
     console.log("instance has been disposed");
   }
 }
