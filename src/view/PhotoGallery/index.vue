@@ -6,8 +6,8 @@
 
 <style lang="less" scoped>
 .photo-wall-wrapper {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   display: block;
   background-color: darkgray;
 
@@ -106,11 +106,14 @@ const setRenderer = (ref = null) => {
   const width = ref ? ref.clientWidth : window.innerWidth;
   const height = ref ? ref.clientHeight : window.innerHeight;
   renderer.setSize(width, height);
+  let renderEl = renderer.domElement;
+  renderEl.style.width = "100%";
+  renderEl.style.height = "100%";
   if (ref) {
     console.log("ref", width, height);
-    ref.appendChild(renderer.domElement);
+    ref.appendChild(renderEl);
   } else {
-    document.body.appendChild(renderer.domElement);
+    document.body.appendChild(renderEl);
   }
 };
 
@@ -220,6 +223,16 @@ function run(ref) {
   render();
 }
 
+function resize(ref) {
+  let refClientWidth = ref ? ref.clientWidth : window.innerWidth;
+  let refClientHeight = ref ? ref.clientHeight : window.innerHeight;
+  renderer.setSize(refClientWidth, refClientHeight);
+  scene.position.set(refClientWidth / 2, refClientHeight / 2, 0);
+  camera.position.set(refClientWidth / 2, refClientHeight / 2 + 140, 500);
+  camera.lookAt(scene.position);
+  camera.updateProjectionMatrix();
+}
+
 const mockData = new Array(7).fill(1).map(() => {
   return {
     imageUrl: "./PhotoGallery/pic.png",
@@ -238,15 +251,22 @@ export default {
     CONFIG.card = this.data;
   },
   mounted() {
-    this.resize("photoWallDOM", run(this.$refs.photoWallDOM));
+    run(this.$refs.photoWallDOM);
+    this.$nextTick(() => {
+      this.resize("photoWallDOM", () => resize(this.$refs.photoWallDOM));
+    });
   },
   beforeDestroy() {
     cancelAnimationFrame(requestAnimationFrameIndex);
   },
   methods: {
     resize(refName, fn) {
+      if (!this.$refs[refName]) return;
       const ro = new ResizeObserver(debounce(fn));
-      if (this.$refs[refName]) ro.observe(this.$refs[refName]);
+      ro.observe(this.$refs[refName]);
+      this.$once("hook:beforeDestory", () => {
+        ro.unobserve(this.$refs[refName]);
+      });
     },
   },
 };
@@ -258,7 +278,7 @@ const debounce = (fn) => {
     if (timeout) {
       clearTimeout(timeout);
     }
-    timeout = setTimeout(fn(), 500);
+    timeout = setTimeout(fn, 200);
   };
 };
 </script>

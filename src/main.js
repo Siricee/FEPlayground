@@ -1,6 +1,6 @@
 import Vue from "vue";
 import App from "./App.vue";
-
+import "./main.css"
 Vue.config.productionTip = false;
 import MuseUI from "muse-ui";
 import "muse-ui/dist/muse-ui.css";
