@@ -17,7 +17,7 @@ const MapSH = () => import("./view/MapSH/index.vue");
 const LightDemo = () => import("./view/LightDemo/index.vue");
 const OnlineCamera = () => import("./view/OnlineCamera/App.vue");
 const ShaderTest =  () => import("./view/ShaderTest/index.vue");
-
+const MouseCursor = ()=>import("./view/MouseCursor/index.vue")
 const routes = [
   {
     path: "/",
@@ -76,9 +76,13 @@ const routes = [
         component: OnlineCamera,
       },
       {
-        path:"ShaderTest",
+        path:"/ShaderTest",
         component:ShaderTest,
       },
+      {
+        path:"/MouseCursor",
+        component:MouseCursor,
+      }
     ],
   },
   {

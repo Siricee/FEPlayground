@@ -82,6 +82,10 @@ const menu = [
     text:'ShaderTest',
     link:'/ShaderTest'
   },
+  {
+    text:'MouseCursor',
+    link:'/MouseCursor'
+  },
 ];
 export default {
   data() {
