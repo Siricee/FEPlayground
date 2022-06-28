@@ -15,6 +15,8 @@
 }
 </style>
 <script>
+/* eslint-disable no-unused-vars */
+
 // prop的数据列表支持三种：
 // 1. ['名称1','名称2','名称3','名称4','名称5',]
 // 2. [{
@@ -46,38 +48,53 @@ const debounce = (fn) => {
  * TagCanvas https://codepen.io/deadbead/pen/FrKvi
  */
 import TagCanvas from "./tagCanvas.js";
+// const mockdata = [
+//   { name: "文字0", value: 1 },
+//   { name: "文字1", value: 2 },
+//   { name: "文字2", value: 3 },
+//   { name: "文字3", value: 4 },
+//   { name: "文字4", value: 5 },
+//   { name: "文字5", value: 6 },
+//   { name: "文字6", value: 7 },
+//   { name: "文字7", value: 8 },
+//   { name: "文字8", value: 9 },
+//   { name: "文字9", value: 10 },
+//   { name: "文字10", value: 11 },
+//   { name: "文字11", value: 12 },
+//   { name: "文字12", value: 13 },
+//   { name: "文字13", value: 14 },
+//   { name: "文字14", value: 15 },
+//   { name: "文字15", value: 16 },
+//   { name: "文字16", value: 17 },
+//   { name: "文字17", value: 18 },
+//   { name: "文字18", value: 19 },
+//   { name: "文字19", value: 20 },
+// ];
+const mockdata = [
+  { value: 325, name: '上海' },
+  { value: 611, name: '北京' },
+  { value: 337, name: '广州' },
+  { value: 518, name: '成都' },
+  { value: 573, name: '天津' },
+  { value: 650, name: '苏州' },
+  { value: 561, name: '南京' },
+  { value: 332, name: '深圳' },
+  { value: 583, name: '杭州' },
+  { value: 556, name: '厦门' },
+  { value: 519, name: '西安' },
+  { value: 327, name: '昆明' },
+  { value: 290, name: '长沙' },
+  { value: 246, name: '武汉' },
+  { value: 320, name: '福州' },
+  { value: 696, name: '石家庄' },
+]
 export default {
   name: "tag-canvas-component",
-  //   props: {
-  //     tagList: {
-  //       type: Array,
-  //     },
-  //   },
   data() {
     return {
       // just for test.
-      tagList: [
-        { name: "文字0", value: 1 },
-        { name: "文字1", value: 2 },
-        { name: "文字2", value: 3 },
-        { name: "文字3", value: 4 },
-        { name: "文字4", value: 5 },
-        { name: "文字5", value: 6 },
-        { name: "文字6", value: 7 },
-        { name: "文字7", value: 8 },
-        { name: "文字8", value: 9 },
-        { name: "文字9", value: 10 },
-        { name: "文字10", value: 11 },
-        { name: "文字11", value: 12 },
-        { name: "文字12", value: 13 },
-        { name: "文字13", value: 14 },
-        { name: "文字14", value: 15 },
-        { name: "文字15", value: 16 },
-        { name: "文字16", value: 17 },
-        { name: "文字17", value: 18 },
-        { name: "文字18", value: 19 },
-        { name: "文字19", value: 20 },
-      ],
+      tagList: mockdata,
+      fontSizeRange: [5, 10], // 最大最小字体
       // TagCanvas config
       tagCanvasConfig: {
         shape: "sphere",
@@ -167,14 +184,19 @@ export default {
       canvas.id = "rootcanvas";
       // create tag list
       let ul = document.createElement("ul");
-      const [minValue, maxValue] = this.fontSizeRange;
+      const [minValue, maxValue] = this.valueRange;
       tagList.forEach((t, index) => {
         let li = document.createElement("li");
         let a = document.createElement("a");
         a.innerText = t.name;
         a.id = "tag" + (index + 1);
-        a.style.fontSize =
-          this.calculateFontSize(t.value, [minValue, maxValue]) / 3 + "ex";
+
+        let fontsize = this.calculateFontSize(t.value, this.fontSizeRange, [
+          minValue,
+          maxValue,
+        ]);
+        a.style.fontSize = fontsize;
+
         li.appendChild(a);
         a.addEventListener("click", (ev) => {
           ev.preventDefault();
@@ -207,10 +229,14 @@ export default {
      * 当数据极差过大时，让字体大小归一到10-60范围内，然后用的时候整除3，
      * 可以缩小最大字体和最小字体的差距不至于过于悬殊。
      */
-    calculateFontSize(value, [minValue, maxValue]) {
-      let k = (maxValue - minValue) / 50;
-      let b = 10 - minValue * k;
-      return Math.round(k * value + b);
+    calculateFontSize(value, fontSizeRange, [minValue, maxValue]) {
+      let [fontMinSize, fontMaxSize] = fontSizeRange;
+      let ratio =
+        maxValue - minValue > 0
+          ? (fontMaxSize - fontMinSize) / (maxValue - minValue)
+          : 1;
+      let ansFontSize = fontMinSize + (value - minValue) * ratio;
+      return ansFontSize + "ex";
     },
     clickTagCallBack(val) {
       if (
@@ -248,7 +274,7 @@ export default {
     },
   },
   computed: {
-    fontSizeRange() {
+    valueRange() {
       let maxValue = Math.max(),
         minValue = Math.min();
       for (let i = 0; i < this.tagList.length; i++) {

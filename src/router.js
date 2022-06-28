@@ -8,10 +8,15 @@ const DotChart = () => import("./view/DotChart/DotChart.vue");
 const TagCanvas = () => import("./view/TagCanvas/TagCanvas.vue");
 const Particles = () => import("./view/Particles/index.vue");
 const LinkLines = () => import("./view/LinkLines/index.vue");
-const PhotoGallery = () => import("./view/PhotoGallery/index.vue");
+// const PhotoGallery = () => import("./view/PhotoGallery/index.vue");
+const PhotoGallery = () => import("./view/PhotoGallery/useCss.vue");
+
 const VirtualCity = () => import("./view/VirtualCity/index.vue");
 const MapGeoJsonChina = () => import("./view/MapGeoJsonChina/index.vue");
 const MapSH = () => import("./view/MapSH/index.vue");
+const LightDemo = () => import("./view/LightDemo/index.vue");
+const OnlineCamera = () => import("./view/OnlineCamera/App.vue");
+const ShaderTest =  () => import("./view/ShaderTest/index.vue");
 
 const routes = [
   {
@@ -61,6 +66,18 @@ const routes = [
       {
         path: "/mapShanghai",
         component: MapSH,
+      },
+      {
+        path: "/lightdemo",
+        component: LightDemo,
+      },
+      {
+        path: "/OnlineCamera",
+        component: OnlineCamera,
+      },
+      {
+        path:"ShaderTest",
+        component:ShaderTest,
       },
     ],
   },

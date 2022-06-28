@@ -69,7 +69,19 @@ const menu = [
   {
     text:'ShangHaiMap',
     link:'/mapShanghai'
-  }
+  },
+  {
+    text:'LightDemo',
+    link:'/lightdemo'
+  },
+  // {
+  //   text:'OnlineCamera',
+  //   link:"/OnlineCamera"
+  // },
+  {
+    text:'ShaderTest',
+    link:'/ShaderTest'
+  },
 ];
 export default {
   data() {
