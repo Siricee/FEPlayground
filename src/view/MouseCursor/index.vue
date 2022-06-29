@@ -8,9 +8,10 @@
       <button class="button">点击测试</button>
     </div>
     <footer>
-      效果参考：<a href="https://github.com/chokcoco/iCSS/issues/186"
+      <p>效果参考：<a href="https://github.com/chokcoco/iCSS/issues/186"
         >有意思的鼠标指针交互探究 · Issue #186 · chokcoco/iCSS</a
-      >
+      ></p>
+      <p>灵感来源：<a href="https://www.laphase5.com/en">Interactive & instructive studio - La Phase 5</a></p>
     </footer>
   </section>
 </template>
