@@ -8,16 +8,17 @@ const DotChart = () => import("./view/DotChart/DotChart.vue");
 const TagCanvas = () => import("./view/TagCanvas/TagCanvas.vue");
 const Particles = () => import("./view/Particles/index.vue");
 const LinkLines = () => import("./view/LinkLines/index.vue");
-// const PhotoGallery = () => import("./view/PhotoGallery/index.vue");
-const PhotoGallery = () => import("./view/PhotoGallery/useCss.vue");
+const PhotoGallery = () => import("./view/PhotoGallery/index.vue");
+// const PhotoGallery = () => import("./view/PhotoGallery/useCss.vue");
 
 const VirtualCity = () => import("./view/VirtualCity/index.vue");
 const MapGeoJsonChina = () => import("./view/MapGeoJsonChina/index.vue");
 const MapSH = () => import("./view/MapSH/index.vue");
 const LightDemo = () => import("./view/LightDemo/index.vue");
 const OnlineCamera = () => import("./view/OnlineCamera/App.vue");
-const ShaderTest =  () => import("./view/ShaderTest/index.vue");
-const MouseCursor = ()=>import("./view/MouseCursor/index.vue")
+const ShaderTest = () => import("./view/ShaderTest/index.vue");
+const MouseCursor = () => import("./view/MouseCursor/index.vue");
+const WeatherForecast = () => import("./view/WeatherForecast/index.vue");
 const routes = [
   {
     path: "/",
@@ -76,13 +77,17 @@ const routes = [
         component: OnlineCamera,
       },
       {
-        path:"/ShaderTest",
-        component:ShaderTest,
+        path: "/ShaderTest",
+        component: ShaderTest,
       },
       {
-        path:"/MouseCursor",
-        component:MouseCursor,
-      }
+        path: "/MouseCursor",
+        component: MouseCursor,
+      },
+      {
+        path: "/weatherforecast",
+        component: WeatherForecast,
+      },
     ],
   },
   {

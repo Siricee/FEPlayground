@@ -86,6 +86,10 @@ const menu = [
     text:'MouseCursor',
     link:'/MouseCursor'
   },
+  {
+    text:"WeatherForecast",
+    link:"/weatherforecast"
+  }
 ];
 export default {
   data() {
