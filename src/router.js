@@ -8,16 +8,20 @@ const DotChart = () => import("./view/DotChart/DotChart.vue");
 const TagCanvas = () => import("./view/TagCanvas/TagCanvas.vue");
 const Particles = () => import("./view/Particles/index.vue");
 const LinkLines = () => import("./view/LinkLines/index.vue");
-// const PhotoGallery = () => import("./view/PhotoGallery/index.vue");
-const PhotoGallery = () => import("./view/PhotoGallery/useCss.vue");
+const PhotoGallery = () => import("./view/PhotoGallery/index.vue");
+// const PhotoGallery = () => import("./view/PhotoGallery/useCss.vue");
 
 const VirtualCity = () => import("./view/VirtualCity/index.vue");
 const MapGeoJsonChina = () => import("./view/MapGeoJsonChina/index.vue");
 const MapSH = () => import("./view/MapSH/index.vue");
 const LightDemo = () => import("./view/LightDemo/index.vue");
-const OnlineCamera = () => import("./view/OnlineCamera/App.vue");
-const ShaderTest =  () => import("./view/ShaderTest/index.vue");
-
+// const OnlineCamera = () => import("./view/OnlineCamera/App.vue");
+// const ShaderTest = () => import("./view/ShaderTest/index.vue");
+const MouseCursor = () => import("./view/MouseCursor/index.vue");
+// const WeatherForecast = () => import("./view/WeatherForecast/index.vue");
+const SketchyPencilEffectShader = () => import("./view/SketchyPencilEffectShader/index.vue");
+const Grass = () => import("./view/Grass/index.vue")
+const StencilBuffer = () => import("./view/StencilBuffer/index.vue")
 const routes = [
   {
     path: "/",
@@ -71,13 +75,33 @@ const routes = [
         path: "/lightdemo",
         component: LightDemo,
       },
+      // {
+      //   path: "/OnlineCamera",
+      //   component: OnlineCamera,
+      // },
+      // {
+      //   path: "/ShaderTest",
+      //   component: ShaderTest,
+      // },
       {
-        path: "/OnlineCamera",
-        component: OnlineCamera,
+        path: "/MouseCursor",
+        component: MouseCursor,
+      },
+      // {
+      //   path: "/weatherforecast",
+      //   component: WeatherForecast,
+      // },
+      {
+        path: '/SketchyPencil',
+        component: SketchyPencilEffectShader,
       },
       {
-        path:"ShaderTest",
-        component:ShaderTest,
+        path: '/Grass',
+        component: Grass,
+      },
+      {
+        path: "/StencilBuffer",
+        component: StencilBuffer,
       },
     ],
   },

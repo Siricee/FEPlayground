@@ -9,6 +9,7 @@ let renderer, scene, camera;
 
 let spotLight, lightHelper, shadowCameraHelper;
 
+let model;
 let gui;
 
 function init(DOM) {
@@ -39,7 +40,6 @@ function init(DOM) {
   controls.addEventListener("change", render);
   controls.minDistance = 20;
   controls.maxDistance = 500;
-  controls.enablePan = false;
 
   const ambient = new THREE.AmbientLight(0xffffff, 0.1);
   scene.add(ambient);
@@ -87,24 +87,28 @@ function init(DOM) {
   //   mesh.position.set(0, 5, 0);
   //   mesh.castShadow = true;
   //   scene.add(mesh);
-
   const loader = new GLTFLoader();
   loader.load(
     "./LightDemo/model.glb",
     (gltf) => {
       console.log("loading model");
-      
-      const model = gltf.scene.children[0];
-      model.position.set(0, 5, 0);
-      model.rotateZ(45);
+      const rawModel = gltf.scene.children[0].children[0].children[0]; // 原始模型数据，类型为Mesh
+      rawModel.scale.set(0.1, 0.1, 0.1)
+      rawModel.position.set(-10, 0, -7)
+      rawModel.castShadow = true
+      model = new THREE.Object3D()  // rawModel添加进model容器解决模型中心轴的偏移，做法就是在外层套一个容器以消除模型本身的偏移量
+      model.position.set(0, 0, 0)
+      model.rotation.set(-Math.PI, -Math.PI / 2, 0)
+      model.add(rawModel);
       model.castShadow = true;
-      model.scale.set(60, 60, 60);
-      const axesHelper = new THREE.AxesHelper( 25 );
-      scene.add( axesHelper );
       scene.add(model);
+
+      const axesHelper = new THREE.AxesHelper(25);
+      scene.add(axesHelper);
+
       console.log("loaded model successfully");
     },
-    () => {},
+    () => { },
     (error) => {
       console.log("An error happened", error);
     }
@@ -138,37 +142,37 @@ function buildGui(GUIDOM) {
     focus: spotLight.shadow.focus,
   };
 
-  gui.addColor(params, "light color").onChange(function(val) {
+  gui.addColor(params, "light color").onChange(function (val) {
     spotLight.color.setHex(val);
     render();
   });
 
-  gui.add(params, "intensity", 0, 2).onChange(function(val) {
+  gui.add(params, "intensity", 0, 2).onChange(function (val) {
     spotLight.intensity = val;
     render();
   });
 
-  gui.add(params, "distance", 50, 200).onChange(function(val) {
+  gui.add(params, "distance", 50, 200).onChange(function (val) {
     spotLight.distance = val;
     render();
   });
 
-  gui.add(params, "angle", 0, Math.PI / 3).onChange(function(val) {
+  gui.add(params, "angle", 0, Math.PI / 3).onChange(function (val) {
     spotLight.angle = val;
     render();
   });
 
-  gui.add(params, "penumbra", 0, 1).onChange(function(val) {
+  gui.add(params, "penumbra", 0, 1).onChange(function (val) {
     spotLight.penumbra = val;
     render();
   });
 
-  gui.add(params, "decay", 1, 2).onChange(function(val) {
+  gui.add(params, "decay", 1, 2).onChange(function (val) {
     spotLight.decay = val;
     render();
   });
 
-  gui.add(params, "focus", 0, 1).onChange(function(val) {
+  gui.add(params, "focus", 0, 1).onChange(function (val) {
     spotLight.shadow.focus = val;
     render();
   });
@@ -176,11 +180,8 @@ function buildGui(GUIDOM) {
   gui.open();
 }
 
-// init();
-// buildGui();
-// render();
-
 function dispose() {
-  renderer = null;
+  renderer.renderLists.dispose()
+  console.log('renderer has been disposed')
 }
 export { init, buildGui, render, dispose };

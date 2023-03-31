@@ -164,9 +164,10 @@ export async function main(DOMid) {
  * 销毁实例方法
  * @param {*} DOMid 
  */
+/* eslint-disable */
  export function dispose(DOMid) {
   const elem = document.getElementById(DOMid);
-  elem.innerHTML = ''
+  if(elem)elem.innerHTML = ''
   map = null;
   engine = null;
 }

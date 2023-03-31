@@ -26,9 +26,13 @@ const loadMap = async (DOMid = ()=>{throw Error('a DOM container is required for
         pitch: 65.59312320916906,
         zoom: 18,
         features: ["bg"],
-        center: [121.490111, 31.227899],
+        center: [121.449463,31.174848],
         mapStyle: "amap://styles/c6660b43a6192769a281eeb0a76be94c",
         showIndoorMap: false,
+      });
+      map.on('click', (e)=>{
+        var text = '您在 [ '+e.lnglat.getLng()+','+e.lnglat.getLat()+' ] 的位置单击了地图！'
+        console.log(text)
       });
     })
     .catch((e) => {

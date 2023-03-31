@@ -46,10 +46,10 @@ const menu = [
     text: "DotChart",
     link: "/dotchart",
   },
-  {
-    text: "Particles",
-    link: "/particles",
-  },
+  // {
+  //   text: "Particles",
+  //   link: "/particles",
+  // },
   {
     text: "LinkLines",
     link: "/linklines",
@@ -78,9 +78,29 @@ const menu = [
   //   text:'OnlineCamera',
   //   link:"/OnlineCamera"
   // },
+  // {
+  //   text:'ShaderTest',
+  //   link:'/ShaderTest'
+  // },
   {
-    text:'ShaderTest',
-    link:'/ShaderTest'
+    text:'MouseCursor',
+    link:'/MouseCursor'
+  },
+  // {
+  //   text:"WeatherForecast",
+  //   link:"/weatherforecast"
+  // },
+  {
+    text:"SketchyPencil",
+    link:"/SketchyPencil"
+  },
+  {
+    text:"Grass",
+    link:"/Grass"
+  },
+  {
+    text:"StencilBuffer",
+    link:"/StencilBuffer"
   },
 ];
 export default {
