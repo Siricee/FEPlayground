@@ -1,8 +1,7 @@
 /* eslint-disable no-unused-vars */
 import * as THREE from "three";
 
-import { GUI } from "./GUI.js";
-
+import { GUI } from 'three/examples/jsm/libs/lil-gui.module.min.js';
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 let renderer, scene, camera;

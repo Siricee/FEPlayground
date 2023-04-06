@@ -22,6 +22,10 @@ const MouseCursor = () => import("./view/MouseCursor/index.vue");
 const SketchyPencilEffectShader = () => import("./view/SketchyPencilEffectShader/index.vue");
 const Grass = () => import("./view/Grass/index.vue")
 const StencilBuffer = () => import("./view/StencilBuffer/index.vue")
+// const ClippingStencil = () => import("./view/ClippingStencil/index.vue")
+const GridGauge = () => import("./view/GridGauge/index.vue")
+
+
 const routes = [
   {
     path: "/",
@@ -103,6 +107,14 @@ const routes = [
         path: "/StencilBuffer",
         component: StencilBuffer,
       },
+      // {
+      //   path: '/ClippingStencil',
+      //   component: ClippingStencil,
+      // }
+      {
+        path: "/GridGauge",
+        component: GridGauge
+      }
     ],
   },
   {

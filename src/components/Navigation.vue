@@ -55,24 +55,24 @@ const menu = [
     link: "/linklines",
   },
   {
-    text:"PhotoGallery",
-    link: "/photogallery"
+    text: "PhotoGallery",
+    link: "/photogallery",
   },
   {
-    text:"VirtualCity",
-    link: "/virtualcity"
+    text: "VirtualCity",
+    link: "/virtualcity",
   },
   {
-    text:"MapGeoJsonChina",
-    link: "/mapgeojsonchina"
+    text: "MapGeoJsonChina",
+    link: "/mapgeojsonchina",
   },
   {
-    text:'ShangHaiMap',
-    link:'/mapShanghai'
+    text: "ShangHaiMap",
+    link: "/mapShanghai",
   },
   {
-    text:'LightDemo',
-    link:'/lightdemo'
+    text: "LightDemo",
+    link: "/lightdemo",
   },
   // {
   //   text:'OnlineCamera',
@@ -83,24 +83,32 @@ const menu = [
   //   link:'/ShaderTest'
   // },
   {
-    text:'MouseCursor',
-    link:'/MouseCursor'
+    text: "MouseCursor",
+    link: "/MouseCursor",
   },
   // {
   //   text:"WeatherForecast",
   //   link:"/weatherforecast"
   // },
   {
-    text:"SketchyPencil",
-    link:"/SketchyPencil"
+    text: "SketchyPencil",
+    link: "/SketchyPencil",
   },
   {
-    text:"Grass",
-    link:"/Grass"
+    text: "Grass",
+    link: "/Grass",
   },
   {
-    text:"StencilBuffer",
-    link:"/StencilBuffer"
+    text: "StencilBuffer",
+    link: "/StencilBuffer",
+  },
+  // {
+  //   text: "ClippingStencil",
+  //   link: "/ClippingStencil",
+  // },
+  {
+    text: "GridGauge",
+    link: "/GridGauge",
   },
 ];
 export default {
