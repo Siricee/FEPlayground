@@ -24,7 +24,7 @@ const Grass = () => import("./view/Grass/index.vue")
 const StencilBuffer = () => import("./view/StencilBuffer/index.vue")
 // const ClippingStencil = () => import("./view/ClippingStencil/index.vue")
 const GridGauge = () => import("./view/GridGauge/index.vue")
-
+const SkyDome = ()=>import("./view/SkyDome/index.vue")
 
 const routes = [
   {
@@ -114,7 +114,11 @@ const routes = [
       {
         path: "/GridGauge",
         component: GridGauge
-      }
+      },
+      {
+        path: "/SkyDome",
+        component: SkyDome
+      },
     ],
   },
   {

@@ -110,6 +110,10 @@ const menu = [
     text: "GridGauge",
     link: "/GridGauge",
   },
+  {
+    text: "SkyDome",
+    link: "/SkyDome",
+  },
 ];
 export default {
   data() {
