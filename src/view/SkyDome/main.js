@@ -46,12 +46,12 @@ async function init(DOM) {
     scene.add(camera) // checkpoint
 
     // CUBE
-    const geometry = new THREE.BoxGeometry(5, 5, 5);
+    const geometry = new THREE.BoxGeometry(2, 2, 2);
     const material = new THREE.MeshNormalMaterial({
         'flatShading': true // 方便我们看到每个面的颜色
     });
     const cube = new THREE.Mesh(geometry, material);
-    cube.position.set(0, 5 / 2, 0)
+    cube.position.set(0, 1, 0)
     scene.add(cube);
 
     // GroundProjectedSkybox
