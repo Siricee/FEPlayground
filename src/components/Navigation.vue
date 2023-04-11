@@ -114,6 +114,10 @@ const menu = [
     text: "SkyDome",
     link: "/SkyDome",
   },
+  {
+    text: "TRSMatrix",
+    link: "/TRSMatrix",
+  },
 ];
 export default {
   data() {

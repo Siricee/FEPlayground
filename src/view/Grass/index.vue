@@ -1,5 +1,5 @@
 <template>
-    <div id="mountedDOM"></div>
+  <div id="mountedDOM"></div>
 </template>
 
 <script>
@@ -14,6 +14,11 @@ export default {
 <style>
 body {
   margin: 0;
+}
+
+#mountedDOM {
+  width: 100%;
+  height: 100%;
 }
 
 canvas {

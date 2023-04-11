@@ -247,6 +247,6 @@ function getFitPosition({ camera }) {
     const far = camera.far;
     const ndc = new THREE.Vector3(-1, -1, far); // 右下角点NDC
     ndc.unproject(camera); // 转换为相机投影坐标
-    ndc.applyMatrix4(camera.matrixWorldInverse) // 左乘相机世界逆矩阵
+    ndc.applyMatrix4(camera.matrixWorldInverse) // 乘相机世界逆矩阵
     return ndc
 }

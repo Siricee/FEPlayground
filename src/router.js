@@ -25,7 +25,7 @@ const StencilBuffer = () => import("./view/StencilBuffer/index.vue")
 // const ClippingStencil = () => import("./view/ClippingStencil/index.vue")
 const GridGauge = () => import("./view/GridGauge/index.vue")
 const SkyDome = ()=>import("./view/SkyDome/index.vue")
-
+const TRSMatrix = () => import("./view/TRSMatrix/index.vue");
 const routes = [
   {
     path: "/",
@@ -118,6 +118,10 @@ const routes = [
       {
         path: "/SkyDome",
         component: SkyDome
+      },
+      {
+        path: "/TRSMatrix",
+        component: TRSMatrix,
       },
     ],
   },
