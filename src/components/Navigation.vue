@@ -4,15 +4,39 @@
       MENU
     </mu-button>
     <mu-drawer :open.sync="open" :docked="docked" :right="position === 'right'">
-      <mu-list>
-        <mu-list-item
-          button
-          v-for="item in menu"
-          :key="item.text"
-          @click="clickMenu(item)"
-        >
-          <mu-list-item-title v-text="item.text"></mu-list-item-title>
-        </mu-list-item>
+      <mu-list toggle-nested>
+        <template v-for="item in menu">
+          <mu-list-item
+            button
+            v-if="item.hasOwnProperty('link')"
+            :key="item.text"
+            @click="clickMenu(item)"
+          >
+            <mu-list-item-title v-text="item.text"></mu-list-item-title>
+          </mu-list-item>
+          <mu-list-item
+            button
+            nested
+            v-if="item.hasOwnProperty('children')"
+            :key="item.text"
+            :open="openTab === item.text"
+            @toggle-nested="openTab = arguments[0] ? item.text : ''"
+          >
+            <mu-list-item-title
+              style="font-style:italic;"
+              v-text="item.text"
+            ></mu-list-item-title>
+            <mu-list-item
+              button
+              slot="nested"
+              v-for="subitem in item.children"
+              :key="subitem.text"
+              @click="clickMenu(subitem)"
+            >
+              <mu-list-item-title v-text="subitem.text"></mu-list-item-title>
+            </mu-list-item>
+          </mu-list-item>
+        </template>
         <mu-list-item @click="open = false" button>
           <mu-list-item-title>Close Menu</mu-list-item-title>
         </mu-list-item>
@@ -35,45 +59,101 @@ const menu = [
     link: "/home",
   },
   {
-    text: "Solar",
-    link: "/solar",
+    text: "2D Examples",
+    children: [
+      {
+        text: "MouseCursor",
+        link: "/MouseCursor",
+      },
+      {
+        text: "TagCanvas",
+        link: "/tagcanvas",
+      },
+      {
+        text: "DotChart",
+        link: "/dotchart",
+      },
+      {
+        text: "LinkLines",
+        link: "/linklines",
+      },
+      {
+        text: "PhotoGallery",
+        link: "/photogallery",
+      },
+    ],
   },
   {
-    text: "TagCanvas",
-    link: "/tagcanvas",
+    text: "GIS Examples",
+    children: [
+      {
+        text: "VirtualCity",
+        link: "/virtualcity",
+      },
+      {
+        text: "MapGeoJsonChina",
+        link: "/mapgeojsonchina",
+      },
+      {
+        text: "ShangHaiMap",
+        link: "/mapShanghai",
+      },
+    ],
   },
   {
-    text: "DotChart",
-    link: "/dotchart",
+    text: "3D Examples",
+    children: [
+      {
+        text: "Solar",
+        link: "/solar",
+      },
+      {
+        text: "Grass",
+        link: "/Grass",
+      },
+      {
+        text: "LightDemo",
+        link: "/lightdemo",
+      },
+      {
+        text: "SketchyPencil",
+        link: "/SketchyPencil",
+      },
+      {
+        text: "StencilBuffer",
+        link: "/StencilBuffer",
+      },
+      {
+        text: "GridGauge",
+        link: "/GridGauge",
+      },
+      {
+        text: "SkyDome",
+        link: "/SkyDome",
+      },
+      {
+        text: "TRSMatrix",
+        link: "/TRSMatrix",
+      },
+    ],
+  },
+  {
+    text: "Unfinished",
+    children: [
+      {
+        text: "RotateMatrix",
+        link: "/RotateMatrix",
+      },
+      {
+        text: "ResetAnimation",
+        link: "/ResetAnimation",
+      },
+    ],
   },
   // {
   //   text: "Particles",
   //   link: "/particles",
   // },
-  {
-    text: "LinkLines",
-    link: "/linklines",
-  },
-  {
-    text: "PhotoGallery",
-    link: "/photogallery",
-  },
-  {
-    text: "VirtualCity",
-    link: "/virtualcity",
-  },
-  {
-    text: "MapGeoJsonChina",
-    link: "/mapgeojsonchina",
-  },
-  {
-    text: "ShangHaiMap",
-    link: "/mapShanghai",
-  },
-  {
-    text: "LightDemo",
-    link: "/lightdemo",
-  },
   // {
   //   text:'OnlineCamera',
   //   link:"/OnlineCamera"
@@ -82,42 +162,10 @@ const menu = [
   //   text:'ShaderTest',
   //   link:'/ShaderTest'
   // },
-  {
-    text: "MouseCursor",
-    link: "/MouseCursor",
-  },
   // {
   //   text:"WeatherForecast",
   //   link:"/weatherforecast"
   // },
-  {
-    text: "SketchyPencil",
-    link: "/SketchyPencil",
-  },
-  {
-    text: "Grass",
-    link: "/Grass",
-  },
-  {
-    text: "StencilBuffer",
-    link: "/StencilBuffer",
-  },
-  // {
-  //   text: "ClippingStencil",
-  //   link: "/ClippingStencil",
-  // },
-  {
-    text: "GridGauge",
-    link: "/GridGauge",
-  },
-  {
-    text: "SkyDome",
-    link: "/SkyDome",
-  },
-  {
-    text: "TRSMatrix",
-    link: "/TRSMatrix",
-  },
 ];
 export default {
   data() {
@@ -126,6 +174,7 @@ export default {
       open: false,
       position: "left",
       menu,
+      openTab: "",
     };
   },
   methods: {

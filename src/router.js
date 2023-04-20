@@ -24,8 +24,12 @@ const Grass = () => import("./view/Grass/index.vue")
 const StencilBuffer = () => import("./view/StencilBuffer/index.vue")
 // const ClippingStencil = () => import("./view/ClippingStencil/index.vue")
 const GridGauge = () => import("./view/GridGauge/index.vue")
-const SkyDome = ()=>import("./view/SkyDome/index.vue")
+const SkyDome = () => import("./view/SkyDome/index.vue")
 const TRSMatrix = () => import("./view/TRSMatrix/index.vue");
+const ResetAnimation = () => import("./view/ResetAnimation/index.vue")
+const RotateMatrix = ()=>import('./view/RotateMatrix/index.vue')
+
+
 const routes = [
   {
     path: "/",
@@ -123,6 +127,14 @@ const routes = [
         path: "/TRSMatrix",
         component: TRSMatrix,
       },
+      {
+        path: "/ResetAnimation",
+        component: ResetAnimation,
+      },
+      {
+        path:"/RotateMatrix",
+        component:RotateMatrix
+      }
     ],
   },
   {
