@@ -27,8 +27,9 @@ const GridGauge = () => import("./view/GridGauge/index.vue")
 const SkyDome = () => import("./view/SkyDome/index.vue")
 const TRSMatrix = () => import("./view/TRSMatrix/index.vue");
 const ResetAnimation = () => import("./view/ResetAnimation/index.vue")
-const RotateMatrix = ()=>import('./view/RotateMatrix/index.vue')
-
+const RotateMatrix = () => import('./view/RotateMatrix/index.vue')
+const Clouds = () => import('./view/Clouds/index.vue')
+const TestModule = () => import('./view/TestModule/index.vue')
 
 const routes = [
   {
@@ -124,6 +125,10 @@ const routes = [
         component: SkyDome
       },
       {
+        path: "/Clouds",
+        component: Clouds
+      },
+      {
         path: "/TRSMatrix",
         component: TRSMatrix,
       },
@@ -132,8 +137,12 @@ const routes = [
         component: ResetAnimation,
       },
       {
-        path:"/RotateMatrix",
-        component:RotateMatrix
+        path: "/RotateMatrix",
+        component: RotateMatrix
+      },
+      {
+        path: '/TestModule',
+        component: TestModule,
       }
     ],
   },

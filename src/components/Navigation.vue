@@ -108,6 +108,10 @@ const menu = [
         link: "/solar",
       },
       {
+        text: "Clouds",
+        link: "/Clouds",
+      },
+      {
         text: "Grass",
         link: "/Grass",
       },
@@ -147,6 +151,10 @@ const menu = [
       {
         text: "ResetAnimation",
         link: "/ResetAnimation",
+      },
+      {
+        text:"TestModule",
+        link:'/TestModule'
       },
     ],
   },
