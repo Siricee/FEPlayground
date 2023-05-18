@@ -30,6 +30,7 @@ const ResetAnimation = () => import("./view/ResetAnimation/index.vue")
 const RotateMatrix = () => import('./view/RotateMatrix/index.vue')
 const Clouds = () => import('./view/Clouds/index.vue')
 const TestModule = () => import('./view/TestModule/index.vue')
+const ReflectionsVideoTextures = () => import('./view/Reflections&VideoTextures/index.vue')
 
 const routes = [
   {
@@ -129,6 +130,10 @@ const routes = [
         component: Clouds
       },
       {
+        path: "/Reflections&VideoTextures",
+        component: ReflectionsVideoTextures
+      },
+      {
         path: "/TRSMatrix",
         component: TRSMatrix,
       },
@@ -143,7 +148,7 @@ const routes = [
       {
         path: '/TestModule',
         component: TestModule,
-      }
+      }, 
     ],
   },
   {
