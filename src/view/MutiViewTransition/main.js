@@ -2,9 +2,7 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { GUI } from "three/examples/jsm/libs/lil-gui.module.min.js";
-import { animateCamera, animateTest } from './animationFunc'
 import CameraControls from './camera-controls.module';
-import * as TWEEN from "./tween.esm.js";
 CameraControls.install( { THREE: THREE } );
 export function run(DOM = null) {
   init(DOM);
@@ -108,45 +106,24 @@ function setGUI() {
   }, "frontView").name("正视图");
   gui.add({
     leftView: () => {
-      // camera.position.set(...POSITION.LEFT)
-      // camera.lookAt(cube.position)
-      // animateCamera(camera,new THREE.Vector3(...POSITION.LEFT),cube.position)
       cameraControls.setLookAt(...POSITION.LEFT,...cube.position,true)
     }
   }, "leftView").name("左视图");
   gui.add({
     rightView: () => {
-      // camera.position.set(...POSITION.RIGHT)
-      // camera.lookAt(cube.position)
-      // animateCamera(camera,new THREE.Vector3(...POSITION.RIGHT),cube.position)
       cameraControls.setLookAt(...POSITION.RIGHT,...cube.position,true)
     }
   }, "rightView").name("右视图");
   gui.add({
     topView: () => {
-      // camera.position.set(...POSITION.TOP)
-      // camera.lookAt(cube.position)
-      // // animateCamera(camera,new THREE.Vector3(...POSITION.TOP),cube.position)
-      // console.log(...cube.position)
       cameraControls.setLookAt(...POSITION.TOP,...cube.position,true)
     }
   }, "topView").name("俯视图");
   gui.add({
     reset: () => {
-      // camera.position.set(...POSITION.NORMAL)
-      // camera.lookAt(cube.position)
-      // animateCamera(camera,new THREE.Vector3(...POSITION.NORMAL),cube.position)
       cameraControls.setLookAt(...POSITION.NORMAL,...cube.position,true)
-      
     }
   }, "reset").name("回正视角");
-  gui.add({
-    test: () => {
-      // animateTest(camera,cube,controls)
-      animateCamera(camera, new THREE.Vector3().fromArray(POSITION.FRONT), controls)
-      // cameraControls.reset(true)
-    }
-  }, "test").name("测试");
 }
 
 export function dispose() {

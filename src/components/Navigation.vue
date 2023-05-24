@@ -1,38 +1,19 @@
 <template>
-  <div class="contents" style="display:contents">
+  <div class="contents" style="display: contents">
     <mu-button class="menu-btn" flat color="primary" @click="open = !open">
       MENU
     </mu-button>
     <mu-drawer :open.sync="open" :docked="docked" :right="position === 'right'">
       <mu-list toggle-nested>
         <template v-for="item in menu">
-          <mu-list-item
-            button
-            v-if="item.hasOwnProperty('link')"
-            :key="item.text"
-            @click="clickMenu(item)"
-          >
+          <mu-list-item button v-if="item.hasOwnProperty('link')" :key="item.text" @click="clickMenu(item)">
             <mu-list-item-title v-text="item.text"></mu-list-item-title>
           </mu-list-item>
-          <mu-list-item
-            button
-            nested
-            v-if="item.hasOwnProperty('children')"
-            :key="item.text"
-            :open="openTab === item.text"
-            @toggle-nested="openTab = arguments[0] ? item.text : ''"
-          >
-            <mu-list-item-title
-              style="font-style:italic;"
-              v-text="item.text"
-            ></mu-list-item-title>
-            <mu-list-item
-              button
-              slot="nested"
-              v-for="subitem in item.children"
-              :key="subitem.text"
-              @click="clickMenu(subitem)"
-            >
+          <mu-list-item button nested v-if="item.hasOwnProperty('children')" :key="item.text"
+            :open="openTab === item.text" @toggle-nested="openTab = arguments[0] ? item.text : ''">
+            <mu-list-item-title style="font-style: italic" v-text="item.text"></mu-list-item-title>
+            <mu-list-item button slot="nested" v-for="subitem in item.children" :key="subitem.text"
+              @click="clickMenu(subitem)">
               <mu-list-item-title v-text="subitem.text"></mu-list-item-title>
             </mu-list-item>
           </mu-list-item>
@@ -104,6 +85,22 @@ const menu = [
     text: "3D Examples",
     children: [
       {
+        text: "TRSMatrix",
+        link: "/TRSMatrix",
+      },
+      {
+        text: "RotateMatrix",
+        link: "/RotateMatrix",
+      },
+      {
+        text: "MutiViewTransition",
+        link: "/MutiViewTransition",
+      },
+      {
+        text: "LimitFPS",
+        link: "/LimitFPS",
+      },
+      {
         text: "Solar",
         link: "/solar",
       },
@@ -136,48 +133,15 @@ const menu = [
         link: "/SkyDome",
       },
       {
-        text: "TRSMatrix",
-        link: "/TRSMatrix",
-      },
-      {
         text: "ReflectionsVideoTextures",
-        link: "/Reflections&VideoTextures"
+        link: "/Reflections&VideoTextures",
       },
     ],
   },
   {
     text: "Unfinished",
-    children: [
-      {
-        text: "RotateMatrix",
-        link: "/RotateMatrix",
-      },
-      {
-        text: "ResetAnimation",
-        link: "/ResetAnimation",
-      },
-      {
-        text:"TestModule",
-        link:'/TestModule'
-      },
-    ],
+    children: [],
   },
-  // {
-  //   text: "Particles",
-  //   link: "/particles",
-  // },
-  // {
-  //   text:'OnlineCamera',
-  //   link:"/OnlineCamera"
-  // },
-  // {
-  //   text:'ShaderTest',
-  //   link:'/ShaderTest'
-  // },
-  // {
-  //   text:"WeatherForecast",
-  //   link:"/weatherforecast"
-  // },
 ];
 export default {
   data() {

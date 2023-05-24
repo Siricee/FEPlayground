@@ -1,8 +1,9 @@
 /* eslint-disable */
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import { GUI } from "three/examples/jsm/libs/lil-gui.module.min.js";
-import * as TWEEN from "./tween.esm.js";
+import Stats from "stats.js";
+// import { GUI } from "three/examples/jsm/libs/lil-gui.module.min.js";
+
 export function run(DOM = null) {
   init(DOM);
 }
@@ -10,9 +11,9 @@ export function run(DOM = null) {
 let scene, renderer;
 let camera;
 let controls;
-let cube, sphere;
-let gclock = new THREE.Clock();
-let animateEnable = false
+let cube;
+const stats = new Stats();
+
 function init(DOM) {
   const [width, height] = [DOM.clientWidth, DOM.clientHeight];
   //创建渲染器，添加到dom当中, antialias（是否启用抗锯齿）
@@ -21,54 +22,54 @@ function init(DOM) {
   renderer.setSize(width, height);
   //将渲染器放置到页面当中
   DOM.appendChild(renderer.domElement);
+  document.getElementsByClassName('gui-container')[0].appendChild(stats.dom)
 
   //创建场景
   scene = new THREE.Scene();
+  scene.background = new THREE.Color(0xb3b3b3)
 
   //创建相机，设置位置
   camera = new THREE.PerspectiveCamera(45, width / height, 1, 4000);
   //设置相机的位置
-  // camera.position.set(12, 12, 48)
-  camera.position.set(8, 5, 11)
+  camera.position.set(0, 0, 10)
   scene.add(camera);
 
+  const geometry = new THREE.TorusKnotGeometry(0.4, 0.15, 220, 60);
   const material = new THREE.MeshNormalMaterial({
     flatShading: true, // 方便我们看到每个面的颜色
   });
-
-  
-  //添加辅助线
-  const axesHelper = new THREE.AxesHelper(50);
-  scene.add(axesHelper);
-
-  // 白轴
-  const lineMaterial = new THREE.LineBasicMaterial({ color: 0xffffff });
-  const points = []
-  points.push(new THREE.Vector3(1.5, 0, 0), new THREE.Vector3(1.5, 1.0, 0))
-  const lineMesh = new THREE.Line(new THREE.BufferGeometry().setFromPoints(points), lineMaterial)
-  scene.add(lineMesh)
-
-
-  let g = new THREE.BoxGeometry(0.2, 0.2, 0.2)
-  let c = new THREE.Mesh(g, material)
-  cube = c
-  c.position.set(3, 0, 0)
-  scene.add(c)
+  cube = new THREE.Mesh(geometry, material)
+  scene.add(cube)
 
 
   controls = new OrbitControls(camera, renderer.domElement);
-  setGUI();
-  render();
+  // render();
+  renderAtFrameCount(renderer, new THREE.Clock(), scene, camera, 25);
   window.addEventListener("resize", onResize);
 }
 
-function render() {
-  if (!renderer) return;
-  renderer.render(scene, camera);
-  requestAnimationFrame(render);
-  if (animateEnable) { animate() }
-  TWEEN.update()
+function renderAtFrameCount(renderer, clock, scene, camera, FPS) {
+  let renderInterval = 1000 / FPS
+  let timeS = 0
+
+  const render = () => {
+    if (!renderer) return;
+    let t = clock.getDelta()
+    timeS += t * 1000;
+
+    if (timeS > renderInterval) {
+      stats.update();
+      renderer.render(scene, camera);
+      timeS %= renderInterval;
+    }
+    
+    cube.rotation.x += 0.01;
+    cube.rotation.y += 0.01;
+    requestAnimationFrame(render);
+  }
+  render();
 }
+
 
 function onResize() {
   const [width, height] = [window.innerWidth, window.innerHeight];
@@ -78,44 +79,14 @@ function onResize() {
   controls.update();
 }
 
-function setGUI() {
-  const gui = new GUI({
-    container: document.getElementsByClassName("gui-container")[0],
-  });
-  gui.add({
-    click: () => {
-      animateEnable = !animateEnable
-      gclock.start()
 
-      // let progress = { value: 0 }
-      // new TWEEN.Tween(progress)
-      //   .to({ value: 1 },1000)
-      //   .easing(TWEEN.Easing.Linear.None)
-      //   .onUpdate((progress) => {
-      //     const v = progress.value
-      //     const t = gclock.getDelta()
-      //     // matrix 实现 cube 自转
-      //     let matrix = new THREE.Matrix4()
-      //     matrix.makeRotationY(Math.PI / 2 * v);
-      //     cube.setRotationFromMatrix(matrix)
+function animate(deltaTime) {
 
-
-      //     // let specAxes = new THREE.Vector3(12, 12, 12)
-      //     // let Rm = new THREE.Matrix4().makeRotationAxis(specAxes.normalize(), t * Math.PI / 20)
-      //     // cube.applyMatrix4(Rm)
-      //   }).start()
-    }
-  }, "click").name("启动动画");
-}
-
-
-function animate() {
-  let v = gclock.getDelta()
   // 平移
   // cube.translateOnAxis(new THREE.Vector3(12,12,12).normalize(),v*2)
 
   let Tm = new THREE.Matrix4().makeTranslation(1.5, 0, 0) // Tm 矩阵表示单次偏移矩阵变换，也就是每个t都会变换。
-  let Rm = new THREE.Matrix4().makeRotationAxis(new THREE.Vector3(0,1,0).normalize(),v * Math.PI / 5)
+  let Rm = new THREE.Matrix4().makeRotationAxis(new THREE.Vector3(0, 1, 0).normalize(), deltaTime * Math.PI / 500)
   let TRS = new THREE.Matrix4().multiply(Tm).multiply(Rm).multiply(Tm.invert()) // 单次变化值
   // let TRS =  new THREE.Matrix4().premultiply(Tm).premultiply(Rm).premultiply(Tm.invert())
   cube.applyMatrix4(TRS)

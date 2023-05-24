@@ -6,31 +6,26 @@ const Welcome = () => import("./view/Welcome.vue");
 const Solar = () => import("./view/Solar/Solar.vue");
 const DotChart = () => import("./view/DotChart/DotChart.vue");
 const TagCanvas = () => import("./view/TagCanvas/TagCanvas.vue");
-const Particles = () => import("./view/Particles/index.vue");
 const LinkLines = () => import("./view/LinkLines/index.vue");
 const PhotoGallery = () => import("./view/PhotoGallery/index.vue");
-// const PhotoGallery = () => import("./view/PhotoGallery/useCss.vue");
 
 const VirtualCity = () => import("./view/VirtualCity/index.vue");
 const MapGeoJsonChina = () => import("./view/MapGeoJsonChina/index.vue");
 const MapSH = () => import("./view/MapSH/index.vue");
 const LightDemo = () => import("./view/LightDemo/index.vue");
-// const OnlineCamera = () => import("./view/OnlineCamera/App.vue");
-// const ShaderTest = () => import("./view/ShaderTest/index.vue");
 const MouseCursor = () => import("./view/MouseCursor/index.vue");
-// const WeatherForecast = () => import("./view/WeatherForecast/index.vue");
 const SketchyPencilEffectShader = () => import("./view/SketchyPencilEffectShader/index.vue");
 const Grass = () => import("./view/Grass/index.vue")
 const StencilBuffer = () => import("./view/StencilBuffer/index.vue")
-// const ClippingStencil = () => import("./view/ClippingStencil/index.vue")
 const GridGauge = () => import("./view/GridGauge/index.vue")
 const SkyDome = () => import("./view/SkyDome/index.vue")
 const TRSMatrix = () => import("./view/TRSMatrix/index.vue");
-const ResetAnimation = () => import("./view/ResetAnimation/index.vue")
+const MutiViewTransition = () => import("./view/MutiViewTransition/index.vue")
 const RotateMatrix = () => import('./view/RotateMatrix/index.vue')
 const Clouds = () => import('./view/Clouds/index.vue')
 const TestModule = () => import('./view/TestModule/index.vue')
 const ReflectionsVideoTextures = () => import('./view/Reflections&VideoTextures/index.vue')
+const LimitFPS = () => import('./view/LimitFPS/index.vue')
 
 const routes = [
   {
@@ -58,10 +53,6 @@ const routes = [
         component: TagCanvas,
       },
       {
-        path: "/particles",
-        component: Particles,
-      },
-      {
         path: "/linklines",
         component: LinkLines,
       },
@@ -85,22 +76,10 @@ const routes = [
         path: "/lightdemo",
         component: LightDemo,
       },
-      // {
-      //   path: "/OnlineCamera",
-      //   component: OnlineCamera,
-      // },
-      // {
-      //   path: "/ShaderTest",
-      //   component: ShaderTest,
-      // },
       {
         path: "/MouseCursor",
         component: MouseCursor,
       },
-      // {
-      //   path: "/weatherforecast",
-      //   component: WeatherForecast,
-      // },
       {
         path: '/SketchyPencil',
         component: SketchyPencilEffectShader,
@@ -113,10 +92,6 @@ const routes = [
         path: "/StencilBuffer",
         component: StencilBuffer,
       },
-      // {
-      //   path: '/ClippingStencil',
-      //   component: ClippingStencil,
-      // }
       {
         path: "/GridGauge",
         component: GridGauge
@@ -138,13 +113,17 @@ const routes = [
         component: TRSMatrix,
       },
       {
-        path: "/ResetAnimation",
-        component: ResetAnimation,
+        path: "/MutiViewTransition",
+        component: MutiViewTransition,
       },
       {
         path: "/RotateMatrix",
         component: RotateMatrix
       },
+      {
+        path: '/LimitFPS',
+        component: LimitFPS,
+      }, 
       {
         path: '/TestModule',
         component: TestModule,
