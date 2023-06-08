@@ -26,6 +26,7 @@ const Clouds = () => import('./view/Clouds/index.vue')
 const TestModule = () => import('./view/TestModule/index.vue')
 const ReflectionsVideoTextures = () => import('./view/Reflections&VideoTextures/index.vue')
 const LimitFPS = () => import('./view/LimitFPS/index.vue')
+const ToonShader = () => import('./view/ToonShader/index.vue')
 
 const routes = [
   {
@@ -124,6 +125,10 @@ const routes = [
         path: '/LimitFPS',
         component: LimitFPS,
       }, 
+      {
+        path: "/ToonShader",
+        component: ToonShader
+      },
       {
         path: '/TestModule',
         component: TestModule,

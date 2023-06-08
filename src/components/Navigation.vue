@@ -136,6 +136,10 @@ const menu = [
         text: "ReflectionsVideoTextures",
         link: "/Reflections&VideoTextures",
       },
+      {
+        text:"ToonShader",
+        link:"/ToonShader"
+      },
     ],
   },
   {
