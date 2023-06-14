@@ -140,6 +140,10 @@ const menu = [
         text:"ToonShader",
         link:"/ToonShader"
       },
+      {
+        text:"Emoji",
+        link:"/Emoji"
+      },
     ],
   },
   {

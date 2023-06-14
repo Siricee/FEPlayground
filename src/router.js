@@ -27,6 +27,7 @@ const TestModule = () => import('./view/TestModule/index.vue')
 const ReflectionsVideoTextures = () => import('./view/Reflections&VideoTextures/index.vue')
 const LimitFPS = () => import('./view/LimitFPS/index.vue')
 const ToonShader = () => import('./view/ToonShader/index.vue')
+const Emoji = ()=> import('./view/Emoji/index.vue')
 
 const routes = [
   {
@@ -128,6 +129,10 @@ const routes = [
       {
         path: "/ToonShader",
         component: ToonShader
+      },
+      {
+        path: "/Emoji",
+        component: Emoji
       },
       {
         path: '/TestModule',
