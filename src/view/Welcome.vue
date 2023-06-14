@@ -15,7 +15,7 @@
     </section>
     <section class="decoration-item">
       <div class="typing-demo">
-        This is a Experimental Playground.
+        Welcome to Sirice's FrontEnd Playground!
       </div>
     </section>
     <p>Click Menu button on right top to visit demos</p>
@@ -167,12 +167,11 @@
         border-color: transparent;
       }
     }
-    width: 30ch;
+    width: 35ch;
     animation: typing 2s steps(22), blink 0.5s step-end infinite alternate;
     white-space: nowrap;
     overflow: hidden;
     border-right: 3px solid;
-    font-family: monospace;
     font-size: 2em;
   }
 }
