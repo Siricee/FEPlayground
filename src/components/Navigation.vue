@@ -97,6 +97,14 @@ const menu = [
         link: "/MutiViewTransition",
       },
       {
+        text: 'TransformController',
+        link: '/TransformController',
+      },
+      {
+        text: 'TransformSynchronise',
+        link: '/TransformSynchronise',
+      },
+      {
         text: "LimitFPS",
         link: "/LimitFPS",
       },
@@ -137,18 +145,27 @@ const menu = [
         link: "/Reflections&VideoTextures",
       },
       {
-        text:"ToonShader",
-        link:"/ToonShader"
+        text: "ToonShader",
+        link: "/ToonShader"
       },
       {
-        text:"Emoji",
-        link:"/Emoji"
+        text: "Emoji",
+        link: "/Emoji"
       },
+      {
+        text: 'ToggleScene',
+        link: '/ToggleScene',
+      },
+      {
+        text: 'AtomiController',
+        link: '/AtomiController',
+      }
     ],
   },
   {
     text: "Unfinished",
-    children: [],
+    children: [
+    ],
   },
 ];
 export default {

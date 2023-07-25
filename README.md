@@ -17,3 +17,7 @@ This is a Experimental Playground for testing demos and effects.
 - Solar
 - SkyDome
 - Reflections&VideoTextures: Draco Model, MeshReflectorMaterial, troika-three-text, VideoMaterial.
+
+# Tips
+
+Jesus, Docs maybe updated later. I'm too busy so that you can just read the code.

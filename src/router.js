@@ -26,8 +26,13 @@ const Clouds = () => import('./view/Clouds/index.vue')
 const TestModule = () => import('./view/TestModule/index.vue')
 const ReflectionsVideoTextures = () => import('./view/Reflections&VideoTextures/index.vue')
 const LimitFPS = () => import('./view/LimitFPS/index.vue')
+const TransformController = () => import('./view/TransformController/index.vue')
+const TransformSynchronise = () => import('./view/TransformSynchronise/index.vue')
 const ToonShader = () => import('./view/ToonShader/index.vue')
-const Emoji = ()=> import('./view/Emoji/index.vue')
+const Emoji = () => import('./view/Emoji/index.vue')
+const ToggleScene = () => import('./view/ToggleScene/index.vue')
+const AtomiController = () => import('./view/AtomiController/index.vue')
+
 
 const routes = [
   {
@@ -125,10 +130,18 @@ const routes = [
       {
         path: '/LimitFPS',
         component: LimitFPS,
-      }, 
+      },
       {
         path: "/ToonShader",
         component: ToonShader
+      },
+      {
+        path: '/TransformController',
+        component: TransformController,
+      },
+      {
+        path: '/TransformSynchronise',
+        component: TransformSynchronise,
       },
       {
         path: "/Emoji",
@@ -137,7 +150,15 @@ const routes = [
       {
         path: '/TestModule',
         component: TestModule,
-      }, 
+      },
+      {
+        path: '/ToggleScene',
+        component: ToggleScene,
+      },
+      {
+        path: '/AtomiController',
+        component: AtomiController
+      }
     ],
   },
   {
