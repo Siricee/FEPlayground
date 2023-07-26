@@ -105,6 +105,14 @@ const menu = [
         link: '/TransformSynchronise',
       },
       {
+        text: 'MultiScenesSingleRender',
+        link: '/MultiScenesSingleRender',
+      },
+      {
+        text: 'MultiViewsSingleRender',
+        link: '/MultiViewsSingleRender',
+      },
+      {
         text: "LimitFPS",
         link: "/LimitFPS",
       },

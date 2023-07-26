@@ -32,7 +32,8 @@ const ToonShader = () => import('./view/ToonShader/index.vue')
 const Emoji = () => import('./view/Emoji/index.vue')
 const ToggleScene = () => import('./view/ToggleScene/index.vue')
 const AtomiController = () => import('./view/AtomiController/index.vue')
-
+const MultiScenesSingleRender = () => import('./view/MultiScenesSingleRender/index.vue')
+const MultiViewsSingleRender = () => import('./view/MultiViewsSingleRender/index.vue')
 
 const routes = [
   {
@@ -158,7 +159,15 @@ const routes = [
       {
         path: '/AtomiController',
         component: AtomiController
-      }
+      },
+      {
+        path: '/MultiScenesSingleRender',
+        component: MultiScenesSingleRender,
+      },
+      {
+        path: '/MultiViewsSingleRender',
+        component: MultiViewsSingleRender,
+      },
     ],
   },
   {
