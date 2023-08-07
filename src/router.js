@@ -17,6 +17,7 @@ const MouseCursor = () => import("./view/MouseCursor/index.vue");
 const SketchyPencilEffectShader = () => import("./view/SketchyPencilEffectShader/index.vue");
 const Grass = () => import("./view/Grass/index.vue")
 const StencilBuffer = () => import("./view/StencilBuffer/index.vue")
+const StencilClipCapOutline = () => import('./view/StencilClipCapOutline/index.vue')
 const GridGauge = () => import("./view/GridGauge/index.vue")
 const SkyDome = () => import("./view/SkyDome/index.vue")
 const TRSMatrix = () => import("./view/TRSMatrix/index.vue");
@@ -89,16 +90,20 @@ const routes = [
         component: MouseCursor,
       },
       {
-        path: '/SketchyPencil',
-        component: SketchyPencilEffectShader,
-      },
-      {
         path: '/Grass',
         component: Grass,
       },
       {
+        path: '/SketchyPencil',
+        component: SketchyPencilEffectShader,
+      },
+      {
         path: "/StencilBuffer",
         component: StencilBuffer,
+      },
+      {
+        path: "/StencilClipCapOutline",
+        component: StencilClipCapOutline
       },
       {
         path: "/GridGauge",

@@ -137,6 +137,10 @@ const menu = [
         link: "/SketchyPencil",
       },
       {
+        text: "StencilClipCapOutline",
+        link: "/StencilClipCapOutline"
+      },
+      {
         text: "StencilBuffer",
         link: "/StencilBuffer",
       },

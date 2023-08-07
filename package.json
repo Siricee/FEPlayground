@@ -15,6 +15,7 @@
         "postprocessing": "^6.31.0",
         "stats.js": "^0.17.0",
         "three": "^0.152.0",
+        "three-mesh-bvh": "^0.6.3",
         "troika-three-text": "^0.47.2",
         "vue": "^2.6.11",
         "vue-router": "^3.5.3"
