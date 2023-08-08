@@ -20,7 +20,7 @@ const params = {
   helperDisplay: false,
   helperDepth: 10,
 
-  wireframeDisplay: false,
+  wireframeDisplay: true,
   displayModel: true,
 
   animate: true,
@@ -34,7 +34,6 @@ let colliderBvh, colliderMesh, bvhHelper;
 let frontSideModel, backSideModel, planeMesh;
 let clippingPlanes, outlineLines;
 let initialClip = false;
-// let outputElement = null;
 let time = 0;
 
 const tempVector = new THREE.Vector3();
@@ -50,19 +49,15 @@ function init(DOM) {
 
   const [width, height] = [DOM.clientWidth, DOM.clientHeight];
 
-  // outputElement = document.getElementById('output');
-
   const bgColor = new THREE.Color(0x263238).multiplyScalar(0.1);
 
   // renderer setup
-  renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setClearColor(bgColor, 1);
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   renderer.localClippingEnabled = true;
-
-  renderer = new THREE.WebGLRenderer({ antialias: true });
   renderer.setSize(width, height);
   DOM.appendChild(renderer.domElement);
 
@@ -98,9 +93,12 @@ function init(DOM) {
     stencilFail: THREE.ZeroStencilOp,
     stencilZFail: THREE.ZeroStencilOp,
     stencilZPass: THREE.ZeroStencilOp,
+    transparent: true,
+    opacity: 0.6,
+    color: 0x80deea,
   }));
+
   planeMesh.scale.setScalar(1.5);
-  planeMesh.material.color.set(0x80deea).convertLinearToSRGB();
   planeMesh.renderOrder = 2;
   scene.add(planeMesh);
 
@@ -162,7 +160,7 @@ function init(DOM) {
     const model = gltf.scene.children[0].children[0].children[0];
     model.material = new THREE.MeshBasicMaterial();
     model.position.set(0, 0, 0);
-    model.scale.set(0.005, 0.005, 0.005)
+    model.scale.setScalar(0.005);
     model.quaternion.identity();
 
     const mergedGeometry = model.geometry;
@@ -235,6 +233,7 @@ function init(DOM) {
 
         const material = c.material.clone();
         material.color.set(0xffffff);
+
         material.roughness = 1.0;
         material.metalness = 0.0;
         material.colorWrite = false;
@@ -286,49 +285,49 @@ function init(DOM) {
 
   setUI()
 
+
   // stats
   stats = new Stats();
   document.getElementsByClassName('gui-container')[0].appendChild(stats.dom)
-  // document.body.appendChild(stats.domElement);
   window.addEventListener("resize", onResize);
 }
 
-function setUI(){
-// dat.gui
-gui = new GUI({
-  container: document.getElementsByClassName("gui-container")[0],
-});
+function setUI() {
+  // dat.gui
+  gui = new GUI({
+    container: document.getElementsByClassName("gui-container")[0],
+  });
 
-gui.add(params, 'invert');
-gui.add(params, 'animate');
-gui.add(params, 'animation', ['SPIN', 'OSCILLATE']).onChange(() => {
+  gui.add(params, 'invert');
+  gui.add(params, 'animate');
+  gui.add(params, 'animation', ['SPIN', 'OSCILLATE']).onChange(() => {
 
-  time = 0;
+    time = 0;
 
-});
-gui.add(params, 'displayModel');
-gui.add(params, 'useBVH');
+  });
+  gui.add(params, 'displayModel');
+  gui.add(params, 'useBVH');
 
-const helperFolder = gui.addFolder('helper');
-helperFolder.add(params, 'wireframeDisplay');
-helperFolder.add(params, 'helperDisplay');
-helperFolder.add(params, 'helperDepth', 1, 20, 1).onChange(v => {
+  const helperFolder = gui.addFolder('helper');
+  helperFolder.add(params, 'wireframeDisplay');
+  helperFolder.add(params, 'helperDisplay');
+  helperFolder.add(params, 'helperDepth', 1, 20, 1).onChange(v => {
 
-  if (bvhHelper) {
+    if (bvhHelper) {
 
-    bvhHelper.depth = parseInt(v);
-    bvhHelper.update();
+      bvhHelper.depth = parseInt(v);
+      bvhHelper.update();
 
-  }
+    }
 
-});
-helperFolder.open();
-gui.open();
+  });
+  helperFolder.open();
+  gui.open();
 }
 
 function render() {
   if (!renderer) return;
-  
+
   if (bvhHelper) {
 
     bvhHelper.visible = params.helperDisplay;
@@ -345,6 +344,7 @@ function render() {
   //   .convertSRGBToLinear();
 
   const delta = Math.min(clock.getDelta(), 0.03);
+
   if (params.animate) {
 
     time += delta;
@@ -382,8 +382,9 @@ function render() {
     localPlane.copy(clippingPlane).applyMatrix4(inverseMatrix);
 
     let index = 0;
+
     const posAttr = outlineLines.geometry.attributes.position;
-    const startTime = window.performance.now();
+
     colliderBvh.shapecast({
 
       intersectsBounds: box => {
@@ -475,16 +476,13 @@ function render() {
     outlineLines.geometry.setDrawRange(0, index);
     outlineLines.position.copy(clippingPlane.normal).multiplyScalar(- 0.00001);
     posAttr.needsUpdate = true;
-
-    // const delta = window.performance.now() - startTime;
-    // outputElement.innerText = `${parseFloat(delta.toFixed(3))}ms`;
-
   }
 
   stats.update();
-  requestAnimationFrame(render);
 
   controls.update();
+
+  requestAnimationFrame(render);
 
   renderer.render(scene, camera);
 
