@@ -30,6 +30,7 @@ const LimitFPS = () => import('./view/LimitFPS/index.vue')
 const TransformController = () => import('./view/TransformController/index.vue')
 const TransformSynchronise = () => import('./view/TransformSynchronise/index.vue')
 const ToonShader = () => import('./view/ToonShader/index.vue')
+const ToonShader2 = () => import('./view/ToonShader2/index.vue')
 const Emoji = () => import('./view/Emoji/index.vue')
 const ToggleScene = () => import('./view/ToggleScene/index.vue')
 const AtomiController = () => import('./view/AtomiController/index.vue')
@@ -140,6 +141,10 @@ const routes = [
       {
         path: "/ToonShader",
         component: ToonShader
+      },
+      {
+        path: "/ToonShader2",
+        component: ToonShader2,
       },
       {
         path: '/TransformController',

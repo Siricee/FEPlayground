@@ -161,6 +161,10 @@ const menu = [
         link: "/ToonShader"
       },
       {
+        text: "ToonShader2",
+        link: "/ToonShader2"
+      },
+      {
         text: "Emoji",
         link: "/Emoji"
       },
