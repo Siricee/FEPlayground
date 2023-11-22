@@ -97,7 +97,7 @@ function loadModel() {
   const loader = new GLTFLoader()
 
   const dracoLoader = new DRACOLoader();
-  dracoLoader.setDecoderPath('./Reflections&VideoTextures/draco/');
+  dracoLoader.setDecoderPath('./Common/draco/');
   dracoLoader.preload();
   loader.setDRACOLoader(dracoLoader);
 

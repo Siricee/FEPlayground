@@ -175,7 +175,16 @@ const menu = [
       {
         text: 'AtomiController',
         link: '/AtomiController',
-      }
+      },
+      {
+        text: "UVchecker",
+        link: "/UVchecker"
+      },
+      {
+        text: 'HumanSkin',
+        link: '/HumanSkin'
+      },
+
     ],
   },
   {

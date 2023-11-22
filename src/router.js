@@ -36,6 +36,8 @@ const ToggleScene = () => import('./view/ToggleScene/index.vue')
 const AtomiController = () => import('./view/AtomiController/index.vue')
 const MultiScenesSingleRender = () => import('./view/MultiScenesSingleRender/index.vue')
 const MultiViewsSingleRender = () => import('./view/MultiViewsSingleRender/index.vue')
+const UVchecker = () => import('./view/UVchecker/index.vue')
+const HumanSkin = () => import('./view/HumanSkin/index.vue')
 
 const routes = [
   {
@@ -177,6 +179,14 @@ const routes = [
       {
         path: '/MultiViewsSingleRender',
         component: MultiViewsSingleRender,
+      },
+      {
+        path: "/UVchecker",
+        component: UVchecker,
+      },
+      {
+        path: "/HumanSkin",
+        component: HumanSkin,
       },
     ],
   },
