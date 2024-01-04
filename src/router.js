@@ -38,6 +38,7 @@ const MultiScenesSingleRender = () => import('./view/MultiScenesSingleRender/ind
 const MultiViewsSingleRender = () => import('./view/MultiViewsSingleRender/index.vue')
 const UVchecker = () => import('./view/UVchecker/index.vue')
 const HumanSkin = () => import('./view/HumanSkin/index.vue')
+const EllipseCurveCamera = ()=> import('./view/EllipseCurveCamera/index.vue')
 
 const routes = [
   {
@@ -187,6 +188,10 @@ const routes = [
       {
         path: "/HumanSkin",
         component: HumanSkin,
+      },
+      {
+        path:"/EllipseCurveCamera",
+        component: EllipseCurveCamera
       },
     ],
   },

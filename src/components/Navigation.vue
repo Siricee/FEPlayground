@@ -184,7 +184,10 @@ const menu = [
         text: 'HumanSkin',
         link: '/HumanSkin'
       },
-
+      {
+        text: "EllipseCurveCamera",
+        link: "/EllipseCurveCamera"
+      },
     ],
   },
   {
