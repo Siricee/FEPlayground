@@ -39,6 +39,7 @@ const MultiViewsSingleRender = () => import('./view/MultiViewsSingleRender/index
 const UVchecker = () => import('./view/UVchecker/index.vue')
 const HumanSkin = () => import('./view/HumanSkin/index.vue')
 const EllipseCurveCamera = ()=> import('./view/EllipseCurveCamera/index.vue')
+const GetHardwareInfo = () => import('./view/GetHardwareInfo/index.vue')
 
 const routes = [
   {
@@ -193,6 +194,10 @@ const routes = [
         path:"/EllipseCurveCamera",
         component: EllipseCurveCamera
       },
+      {
+        path: '/GetHardwareInfo',
+        component: GetHardwareInfo,
+      }
     ],
   },
   {

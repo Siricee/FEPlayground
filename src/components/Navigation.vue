@@ -85,6 +85,10 @@ const menu = [
     text: "3D Examples",
     children: [
       {
+        text: 'GetHardwareInfo',
+        link: '/GetHardwareInfo'
+      },
+      {
         text: "TRSMatrix",
         link: "/TRSMatrix",
       },
