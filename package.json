@@ -1,53 +1,32 @@
 {
-    "name": "frontend-playground-sirice",
-    "version": "0.1.0",
-    "private": true,
-    "scripts": {
-        "dev": "export NODE_OPTIONS=--openssl-legacy-provider &&  vue-cli-service serve",
-        "build": "vue-cli-service build",
-        "lint": "vue-cli-service lint"
-    },
-    "dependencies": {
-        "@amap/amap-jsapi-loader": "^1.0.1",
-        "core-js": "^3.6.5",
-        "less-loader": "^7.3.0",
-        "muse-ui": "^3.0.2",
-        "postprocessing": "^6.31.0",
-        "stats.js": "^0.17.0",
-        "three": "^0.152.0",
-        "three-mesh-bvh": "^0.6.3",
-        "troika-three-text": "^0.47.2",
-        "vue": "^2.6.11",
-        "vue-router": "^3.5.3"
-    },
-    "devDependencies": {
-        "@vue/cli-plugin-babel": "~4.5.0",
-        "@vue/cli-plugin-eslint": "~4.5.0",
-        "@vue/cli-service": "~4.5.0",
-        "babel-eslint": "^10.1.0",
-        "d3-geo": "^3.0.1",
-        "eslint": "^6.7.2",
-        "eslint-plugin-vue": "^6.2.2",
-        "less": "^4.1.2",
-        "vue-template-compiler": "^2.6.11"
-    },
-    "eslintConfig": {
-        "root": true,
-        "env": {
-            "node": true
-        },
-        "extends": [
-            "plugin:vue/essential",
-            "eslint:recommended"
-        ],
-        "parserOptions": {
-            "parser": "babel-eslint"
-        },
-        "rules": {}
-    },
-    "browserslist": [
-        "> 1%",
-        "last 2 versions",
-        "not dead"
-    ]
+  "name": "my-vue-ts-app",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@amap/amap-jsapi-loader": "^1.0.1",
+    "@vicons/ionicons5": "^0.12.0",
+    "naive-ui": "^2.26.0",
+    "postprocessing": "^6.31.0",
+    "stats.js": "^0.17.0",
+    "terser": "^5.29.2",
+    "three": "^0.152.0",
+    "three-mesh-bvh": "^0.6.3",
+    "troika-three-text": "^0.47.2",
+    "vue": "^3.2.25",
+    "vue-router": "4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.13",
+    "@vitejs/plugin-vue": "^5.0.3",
+    "d3-geo": "^3.0.1",
+    "sass": "^1.49.9",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.12",
+    "vue-tsc": "^1.8.27"
+  }
 }

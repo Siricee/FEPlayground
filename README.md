@@ -1,23 +1,48 @@
-# My FrentEnd Playground
+# Vue3 + Vite + Typescript + Pinia + Naive
 
-This is a Experimental Playground for testing demos and effects.
+使用 vue3 + vite + typescript + pinia + naive ui 搭建的前端框架
 
-# Frameworks
+默认配置了 px 转换成 rem 的插件
 
-- Vue 2.6
-- Less
-- Muse-UI
-- Three R152
+```bash
+# 克隆项目
+git clone git@github.com:FBmm/vue3-vite-ts-pinia-naive.git
 
-# Stages
+# 进入项目目录
+cd vue3-vite-ts-pinia-naive
 
-- Clouds: Instanced Mesh
-- Grass: Stylized Grass rendered by shader
-- SketchyPencil: Post Processing sketchy-pencil effect
-- Solar
-- SkyDome
-- Reflections&VideoTextures: Draco Model, MeshReflectorMaterial, troika-three-text, VideoMaterial.
+# 安装依赖
+pnpm install
 
-# Tips
+# 启动服务
+pnpm dev
+```
 
-Jesus, Docs maybe updated later. I'm too busy so that you can just read the code.
+## cover
+
+https://codepen.io/supah/pen/gdegrW
+
+
+https://codepen.io/phillip-gimmi/pen/XWOdEMW
+
+
+## View
+
+Case Study: Design Embraced Portfolio – 2024 | Codrops
+https://tympanus.net/codrops/2024/03/21/case-study-design-embraced-portfolio-2024/
+
+codesandbox.io/p/sandbox/edgesgeometry-iup24
+https://codesandbox.io/p/sandbox/edgesgeometry-iup24
+
+mesqme/waterfalls
+https://github.com/mesqme/waterfalls
+
+
+https://gotohiroki.github.io/distorted-curve-slider/
+
+
+https://codepen.io/alphardex/pen/MWvadVW
+
+
+List Hover Image Ripple
+https://codepen.io/alphardex/pen/bGZJzNN
