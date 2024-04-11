@@ -4,9 +4,9 @@ This is a Experimental Playground for testing demos and effects.
 
 ## Cover Reference
 
-- https://codepen.io/supah/pen/gdegrW
+- Distorted Map: https://codepen.io/supah/pen/gdegrW
 
-- https://codepen.io/phillip-gimmi/pen/XWOdEMW
+- [unused] Background Image: https://codepen.io/phillip-gimmi/pen/XWOdEMW
 
 ## View Reference
 
@@ -26,3 +26,11 @@ https://codepen.io/alphardex/pen/MWvadVW
 
 List Hover Image Ripple
 https://codepen.io/alphardex/pen/bGZJzNN
+
+### TODO
+
+curling planes: https://tympanus.net/codrops/2024/03/21/case-study-design-embraced-portfolio-2024/
+
+codesandbox: https://codesandbox.io/s/webgl-plane-curl-57l7h2?from-embed
+
+https://github.com/devloop01/webgl-image-interactions-aristide
