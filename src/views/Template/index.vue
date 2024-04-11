@@ -4,16 +4,15 @@
     <div class="gui-container" ref="GUIcontainer"></div>
   </section>
 </template>
-<script lang="js">
+<script setup>
 import { run, dispose } from "./main";
-export default {
-  mounted() {
-    run(document.getElementById("mountedDOM"));
-  },
-  beforeDestroy() {
-    dispose()
-  }
-};
+import { onMounted, onBeforeMount } from "vue";
+onMounted(() => {
+  run(document.getElementById("mountedDOM"));
+})
+onBeforeMount(() => {
+  dispose()
+})
 </script>
 <style scoped>
 .wrapper,

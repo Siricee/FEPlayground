@@ -6,7 +6,7 @@ export function run(DOM = null) {
   init(DOM);
 }
 
-let scene,camera, renderer;
+let scene, camera, renderer;
 
 function init(DOM) {
   const [width, height] = [DOM.clientWidth, DOM.clientHeight];
@@ -33,9 +33,9 @@ function init(DOM) {
   window.addEventListener("resize", onResize);
 }
 
-function render(){
-  if(!renderer)return
-  renderer.render(scene,camera)
+function render() {
+  if (!renderer) return
+  renderer.render(scene, camera)
   requestAnimationFrame(render)
 }
 
@@ -50,20 +50,23 @@ function onResize() {
 
 export function dispose() {
   window.removeEventListener("resize", onResize);
-  scene.traverse((child) => {
-    if (child.material) {
-      child.material.dispose();
-    }
-    if (child.geometry) {
-      child.geometry.dispose();
-    }
-    child = null;
-  });
-  scene.clear();
-  renderer.forceContextLoss();
-  renderer.dispose();
-  scene = null;
-  camera = null;
-  renderer.domElement = null;
-  renderer = null;
+  if (scene) {
+    scene.traverse((child) => {
+      if (child.material) {
+        child.material.dispose();
+      }
+      if (child.geometry) {
+        child.geometry.dispose();
+      }
+      child = null;
+    });
+    scene.clear();
+    scene = null;
+  }
+  if (renderer) {
+    renderer.forceContextLoss();
+    renderer.dispose();
+    renderer.domElement = null;
+    renderer = null;
+  }
 }
