@@ -4,8 +4,8 @@
       Feature Showcase
     </header>
     <section class="sketch-list">
-      <SketchItem class="sketch-item" v-for="(item, index) of sketchList" :key="item.name" :cover="item.cover" @click="router.push(item.path)"
-        :text="item.text || item.name" />
+      <SketchItem class="sketch-item" v-for="(item, index) of sketchList" :key="item.name" :cover="item.cover"
+        @click="router.push(item.path)" :text="item.text || item.name" />
     </section>
   </section>
 </template>
@@ -130,6 +130,11 @@ const sketchList = ref([
     name: 'LinkLines',
     path: '/linklines',
     cover: 'linklines.png',
+  },
+  {
+    name: 'CurlPlane',
+    path: '/CurlPlane',
+    cover: 'CurlPlane.png',
   },
 ].map(e => {
   // Dynamic Dummy Image Generator - DummyImage.com  https://dummyimage.com/

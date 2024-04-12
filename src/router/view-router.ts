@@ -189,5 +189,10 @@ export const viewRouters = {
       path: '/GeometryGizmo',
       component: () => import('@/views/GeometryGizmo/index.vue'),
     },
+    {
+      name: 'CurlPlane',
+      path: '/CurlPlane',
+      component: () => import('@/views/CurlPlane/index.vue'),
+    },
   ],
 }
