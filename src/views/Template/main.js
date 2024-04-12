@@ -6,7 +6,7 @@ export function run(DOM = null) {
   init(DOM);
 }
 
-let scene, camera, renderer,controls;
+let scene, camera, renderer;
 
 function init(DOM) {
   const [width, height] = [DOM.clientWidth, DOM.clientHeight];
@@ -27,7 +27,7 @@ function init(DOM) {
   scene.add(cube);
 
 
-  controls = new OrbitControls(camera, renderer.domElement);
+  let controls = new OrbitControls(camera, renderer.domElement);
 
   render();
   window.addEventListener("resize", onResize);

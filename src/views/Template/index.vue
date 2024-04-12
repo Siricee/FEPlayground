@@ -11,6 +11,7 @@ onMounted(() => {
   run(document.getElementById("mountedDOM"));
 })
 onBeforeMount(() => {
+  console.log('onBeforeMount')
   dispose()
 })
 </script>
