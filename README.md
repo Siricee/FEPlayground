@@ -29,8 +29,11 @@ https://codepen.io/alphardex/pen/bGZJzNN
 
 ### TODO
 
-curling planes: https://tympanus.net/codrops/2024/03/21/case-study-design-embraced-portfolio-2024/
+[curling planes: https://tympanus.net/codrops/2024/03/21/case-study-design-embraced-portfolio-2024/
+]
 
 codesandbox: https://codesandbox.io/s/webgl-plane-curl-57l7h2?from-embed
 
 https://github.com/devloop01/webgl-image-interactions-aristide
+
+看他的封装结构和丁达尔光的实现 [nemutas/light-shaft](https://github.com/nemutas/light-shaft) [Preview](https://nemutas.github.io/light-shaft/)
