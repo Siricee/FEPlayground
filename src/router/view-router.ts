@@ -194,5 +194,10 @@ export const viewRouters = {
       path: '/CurlPlane',
       component: () => import('@/views/CurlPlane/index.vue'),
     },
+    {
+      name: 'FilmGrain',
+      path: '/FilmGrain',
+      component: () => import('@/views/FilmGrain/index.vue')
+    },
   ],
 }

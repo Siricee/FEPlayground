@@ -127,9 +127,9 @@ const sketchList = ref([
     cover: 'virtualcity.png',
   },
   {
-    name: 'LinkLines',
-    path: '/linklines',
-    cover: 'linklines.png',
+    name: 'FilmGrain',
+    path: '/FilmGrain',
+    cover: 'FilmGrain.jpg',
   },
   {
     name: 'CurlPlane',
