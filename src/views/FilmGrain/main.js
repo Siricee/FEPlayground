@@ -34,7 +34,6 @@ function init(DOM) {
 
     const shaderMaterial = new THREE.ShaderMaterial({
         side: THREE.DoubleSide,
-        map: texture,
         uniforms: {
             tDiffuse: { value: texture },
             amount: { value: PassArgument.amount },
