@@ -1,9 +1,6 @@
 /* eslint-disable */
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer'
-import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass'
-import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass'
 import { vertexShader, fragmentShader } from './shader'
 import { GUI } from 'three/examples/jsm/libs/lil-gui.module.min.js';
 
@@ -13,7 +10,7 @@ export function run(DOM = null) {
 }
 
 let scene, camera, renderer, controls,
-    composer, customPass, PassArgument = {
+    PassArgument = {
         enable: true,
         amount: 0.0,
         depth: 0.075, // 0.16,
@@ -33,27 +30,11 @@ function init(DOM) {
     camera.position.set(0, 0, 7)
     scene.add(camera);
 
-
     const texture = new THREE.TextureLoader().load("https://photo.tuchong.com/29442098/f/955138231.jpg");
 
-    const material = new THREE.MeshBasicMaterial({
+    const shaderMaterial = new THREE.ShaderMaterial({
         side: THREE.DoubleSide,
         map: texture,
-    })
-
-    const geometry = new THREE.PlaneGeometry(3, 4.5, 200, 200)
-    const mesh = new THREE.Mesh(geometry, material)
-    scene.add(mesh)
-
-
-    //COMPOSER
-    composer = new EffectComposer(renderer);
-    const renderPass = new RenderPass(scene, camera);
-    composer.addPass(renderPass);
-
-
-    //custom shader pass
-    const FilmGrainEffect = {
         uniforms: {
             tDiffuse: { value: texture },
             amount: { value: PassArgument.amount },
@@ -61,43 +42,42 @@ function init(DOM) {
         },
         vertexShader,
         fragmentShader,
-    }
+    })
 
-    customPass = new ShaderPass(FilmGrainEffect);
-    customPass.renderToScreen = true;
-    composer.addPass(customPass);
+    const basicMaterial = new THREE.MeshBasicMaterial({
+        side: THREE.DoubleSide,
+        map: texture,
+    })
+
+    const geometry = new THREE.PlaneGeometry(3, 4.5, 30, 30)
+    const mesh = new THREE.Mesh(geometry, shaderMaterial)
+    scene.add(mesh)
 
     controls = new OrbitControls(camera, renderer.domElement);
     controls.enableRotate = false
 
     const gui = new GUI({ container: document.getElementsByClassName('gui-container')[0] });
-
-    gui.add(PassArgument, 'enable').name('enable').onChange(value => {
+    gui.add(PassArgument, 'enable').name('enable Effect').onChange(value => {
         PassArgument.enable = value
-        if (value) {
-            composer.addPass(customPass)
-        } else {
-            composer.removePass(customPass)
-        }
+        mesh.material = value ? shaderMaterial : basicMaterial
         render();
     })
     gui.add(PassArgument, 'amount', 0, 3, 0.01).name('amount').onChange(value => {
         PassArgument.amount = value
+        shaderMaterial.uniforms["amount"].value = PassArgument.amount;
     })
     gui.add(PassArgument, 'depth', 0, 0.3, 0.001).name('depth').onChange(value => {
         PassArgument.depth = value
+        shaderMaterial.uniforms["depth"].value = PassArgument.depth;
     })
-
 
     render();
     window.addEventListener("resize", onResize);
 }
 
 function render() {
-    if (!composer) return
-    customPass.uniforms["amount"].value = PassArgument.amount;
-    customPass.uniforms["depth"].value = PassArgument.depth;
-    composer.render();
+    if (!renderer) return
+    renderer.render(scene, camera)
     requestAnimationFrame(render)
 }
 
