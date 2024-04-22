@@ -8,6 +8,7 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js'
 import { custompass } from "./pipeline"
+import { PencilLinesPass } from './PencilLinesPass'
 
 let renderer, scene, camera;
 let composer;
@@ -15,7 +16,7 @@ let spotLight;
 let model;
 let gui;
 let axesHelper;
-
+let pencilLinePass;
 
 function init(DOM) {
   renderer = new THREE.WebGLRenderer();
@@ -27,7 +28,6 @@ function init(DOM) {
   DOM.appendChild(renderer.domElement);
 
   renderer.shadowMap.enabled = true;
-
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   renderer.outputEncoding = THREE.sRGBEncoding;
 
@@ -35,7 +35,7 @@ function init(DOM) {
 
 
   scene = new THREE.Scene();
- 
+
 
   camera = new THREE.PerspectiveCamera(
     35,
@@ -43,8 +43,8 @@ function init(DOM) {
     1,
     1000
   );
-  camera.position.set(70, 20, 70);
-  camera.lookAt(0, 50, 0);
+  camera.position.set(40, 20, 40);
+  camera.lookAt(0, 30, 0);
 
   const ambient = new THREE.AmbientLight(0xffffff, 0.1);
   scene.add(ambient);
@@ -70,7 +70,7 @@ function init(DOM) {
     dithering: true,
   });
 
-  let geometry = new THREE.PlaneGeometry(2000, 2000);
+  let geometry = new THREE.PlaneGeometry(150, 150);
 
   let mesh = new THREE.Mesh(geometry, material);
   mesh.position.set(0, 0, 0);
@@ -99,7 +99,7 @@ function init(DOM) {
       axesHelper.visible = false;
       scene.add(axesHelper);
       render();
-      
+
       console.log("loaded model successfully");
     },
     () => { },
@@ -112,9 +112,19 @@ function init(DOM) {
   const renderPass = new RenderPass(scene, camera)
   composer.addPass(renderPass)
 
+  pencilLinePass = new PencilLinesPass({
+    width: renderer.domElement.clientWidth * 3,
+    height: renderer.domElement.clientHeight * 3,
+    scene,
+    camera
+  })
+
   render();
 
   const controls = new OrbitControls(camera, renderer.domElement);
+  controls.target.set(-1.9114473584617535, 8.75190067729339, -0.8088243237200273)
+  controls.update()
+
   controls.addEventListener("change", render);
 
   window.addEventListener("resize", onWindowResize);
@@ -124,59 +134,35 @@ function onWindowResize() {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
+  render()
 }
+
 function render() {
   composer.render()
 }
+
 let PostProcessEnable = false
+let EnhancedPencilEffectEnable = false
+
 function buildGui(GUIDOM) {
   gui = new GUI({ container: GUIDOM });
 
   const params = {
     "Light Color": spotLight.color.getHex(),
-    intensity: spotLight.intensity,
-    distance: spotLight.distance,
-    angle: spotLight.angle,
-    penumbra: spotLight.penumbra,
-    decay: spotLight.decay,
-    focus: spotLight.shadow.focus,
+    // intensity: spotLight.intensity,
+    // distance: spotLight.distance,
+    // angle: spotLight.angle,
+    // penumbra: spotLight.penumbra,
+    // decay: spotLight.decay,
+    // focus: spotLight.shadow.focus,
     "PostProcessEnable": PostProcessEnable,
+    "EnhancedPencilEffect":EnhancedPencilEffectEnable,
   };
 
   gui.addColor(params, "Light Color").onChange(function (val) {
     spotLight.color.setHex(val);
     render();
   });
-
-  // gui.add(params, "intensity", 0, 2).onChange(function (val) {
-  //   spotLight.intensity = val;
-  //   render();
-  // });
-
-  // gui.add(params, "distance", 50, 200).onChange(function (val) {
-  //   spotLight.distance = val;
-  //   render();
-  // });
-
-  // gui.add(params, "angle", 0, Math.PI / 3).onChange(function (val) {
-  //   spotLight.angle = val;
-  //   render();
-  // });
-
-  // gui.add(params, "penumbra", 0, 1).onChange(function (val) {
-  //   spotLight.penumbra = val;
-  //   render();
-  // });
-
-  // gui.add(params, "decay", 1, 2).onChange(function (val) {
-  //   spotLight.decay = val;
-  //   render();
-  // });
-
-  // gui.add(params, "focus", 0, 1).onChange(function (val) {
-  //   spotLight.shadow.focus = val;
-  //   render();
-  // });
 
   gui.add(params, "PostProcessEnable").onChange((enable) => {
     if (enable) {
@@ -185,9 +171,19 @@ function buildGui(GUIDOM) {
       composer.removePass(custompass)
     }
     render();
-  })
+  }).name('Felt Pen Effect')
 
-  // gui.open();
+  gui.add(params,'EnhancedPencilEffect').onChange((enable)=>{
+    if(enable){
+      composer.removePass(custompass)
+      composer.addPass(pencilLinePass)
+    }else{
+      composer.removePass(pencilLinePass)
+    }
+    render();
+  }).name('Pencil Sketch Effect')
+
+
 }
 function dispose() {
   renderer.renderLists.dispose()

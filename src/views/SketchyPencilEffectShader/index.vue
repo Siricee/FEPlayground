@@ -16,7 +16,7 @@
 }
 </style>
 <script>
-import { init, buildGui, render, dispose } from "./light.js";
+import { init, buildGui, render, dispose } from "./main.js";
 export default {
   mounted() {
     init(this.$refs.container);
