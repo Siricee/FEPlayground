@@ -36,3 +36,12 @@ WebGL Structure & Tyndall Effect: [nemutas/light-shaft](https://github.com/nemut
 [michalzalobny/webgl-3d-engine: WebGL2 3D Engine built from scratch.](https://github.com/michalzalobny/webgl-3d-engine)
 
 WebGPU Structure: [neuroprod/webgpu: webgpu game](https://github.com/neuroprod/webgpu)
+
+液态图片：gotohiroki/homunculus: https://gotohiroki.github.io/homunculus/dist/
+https://github.com/gotohiroki/homunculus
+
+球形玻璃：gotohiroki/ha-labo-2d
+https://github.com/gotohiroki/ha-labo-2d
+
+X 上的 Karim Maaloul：Fire Shader. I needed a fire shader in The Cursed Library, so I thought it would be interesting to deconstruct the techniques behind. Made with @threejs and custom shaders. / X
+https://twitter.com/yakudoo/status/1786372418027626885 Codepen: https://codepen.io/Yakudoo/pen/ZEZWKJy
