@@ -46,3 +46,8 @@ Live: https://gotohiroki.github.io/ha-labo-2d/dist/
 
 X 上的 Karim Maaloul：Fire Shader. I needed a fire shader in The Cursed Library, so I thought it would be interesting to deconstruct the techniques behind. Made with @threejs and custom shaders. / X
 https://twitter.com/yakudoo/status/1786372418027626885 Codepen: https://codepen.io/Yakudoo/pen/ZEZWKJy
+
+
+### *Read Later*
+
+规则引擎：[tdegrunt/jools: JavaScript Rule Engine](https://github.com/tdegrunt/jools)

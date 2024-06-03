@@ -199,5 +199,10 @@ export const viewRouters = {
       path: '/FilmGrain',
       component: () => import('@/views/FilmGrain/index.vue')
     },
+    {
+      name: 'RevokePattern',
+      path: '/RevokePattern',
+      component: () => import('@/views/RevokePattern/index.vue')
+    },
   ],
 }
