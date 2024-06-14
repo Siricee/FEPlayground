@@ -25,6 +25,11 @@ export const viewRouters = {
       path: '/photogallery',
       component: () => import('@/views/PhotoGallery/index.vue'),
     },
+    {
+      name: 'RevokePattern',
+      path: '/RevokePattern',
+      component: () => import('@/views/RevokePattern/index.vue')
+    },
   ],
   'GIS Examples': [
     {
@@ -199,10 +204,10 @@ export const viewRouters = {
       path: '/FilmGrain',
       component: () => import('@/views/FilmGrain/index.vue')
     },
-    {
-      name: 'RevokePattern',
-      path: '/RevokePattern',
-      component: () => import('@/views/RevokePattern/index.vue')
-    },
+   {
+    name:'AnimeConcentrationLineEffect',
+    path:'/AnimeConcentrationLineEffect',
+    component:()=>import('@/views/AnimeConcentrationLineEffect/index.vue')
+   },
   ],
 }
